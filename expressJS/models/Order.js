@@ -28,7 +28,7 @@ const OrderSchema = new Schema({
 
 });
 
-QuestionSchema.pre("save", function (next) {
+OrderSchema.pre("save", function (next) {
   if (!this.isModified("title")) {
     next();
   }

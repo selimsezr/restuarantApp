@@ -1,4 +1,4 @@
-const Question = require("../models/Question");
+const Question = require("../models/Order");
 const CustomError = require("../helpers/error/CustomError");
 const asyncErrorWrapper = require("express-async-handler");
 

@@ -1,5 +1,5 @@
 const User = require("../../models/User");
-const Question = require("../../models/Question");
+const Order = require("../../models/Order");
 const asyncErrorWrapper = require("express-async-handler");
 const CustomError = require("../../helpers/error/CustomError");
 
@@ -15,14 +15,14 @@ const checkUserExist = asyncErrorWrapper(async (req, res, next) => {
   next();
 });
 
-const checkQuestionExist = asyncErrorWrapper(async (req, res, next) => {
-  const question_id = req.params.id || req.params.question_id;
+const checkOrderExist = asyncErrorWrapper(async (req, res, next) => {
+  const Order_id = req.params.id || req.params.Order_id;
 
-  const question = await Question.findById(question_id);
+  const Order = await Order.findById(Order_id);
 
-  if (!question) {
-    return next(new CustomError("There is no such question with that id", 400));
+  if (!Order) {
+    return next(new CustomError("There is no such Order with that id", 400));
   }
   next();
 });
-module.exports = { checkUserExist, checkQuestionExist };
+module.exports = { checkUserExist, checkOrderExist };
