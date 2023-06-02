@@ -10,34 +10,33 @@ const {
 } = require("../controllers/order");
 const {
   getAccessToRoute,
-  getQuestionOwnerAccess,
+  getOrderOwnerAccess,
 } = require("../middlewares/authorization/auth");
 const {
-  checkQuestionExist,
+  checkOrderExist,
 } = require("../middlewares/database/databeseErrorHelpers");
 const router = express.Router();
 
 router.post("/order", getAccessToRoute, newOrder);
 router.get("/", getAllOrder);
-router.get("/:id", checkQuestionExist, getSingleOrder);
+router.get("/:id", checkOrderExist, getSingleOrder);
 //Aşağıdakilerde zaten türlerini belirttiğimiz için /edit ve /delete yazmadan da yapabiliriz
 router.put(
   "/:id/edit",
-  [getAccessToRoute, checkQuestionExist, getQuestionOwnerAccess],
+  [getAccessToRoute, checkOrderExist, getOrderOwnerAccess],
   editOrder
 );
 router.delete(
   "/:id/delete",
-  [getAccessToRoute, checkQuestionExist, getQuestionOwnerAccess],
+  [getAccessToRoute, checkOrderExist, getOrderOwnerAccess],
   deleteOrder
 );
-router.get("/:id/like", [getAccessToRoute, checkQuestionExist], likeOrder);
+router.get("/:id/like", [getAccessToRoute, checkOrderExist], likeOrder);
 router.get(
   "/:id/undo_like",
-  [getAccessToRoute, checkQuestionExist],
+  [getAccessToRoute, checkOrderExist],
   undoLikeOrder
 );
 
-router.use("/:question_id/answers", checkQuestionExist, answer)
 
 module.exports = router;
