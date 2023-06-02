@@ -1,11 +1,11 @@
 const express = require("express");
-const question = require("./question");
+const order = require("./order");
 const user = require("./user");
 const admin = require("./admin");
 
 const router = express.Router();
 
-router.use("/questions", question);
+router.use("/orders", order);
 router.use("/users", user);
 router.use("/admin", admin);
 

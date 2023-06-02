@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 const Schema = mongoose.Schema;
 
-const QuestionSchema = new Schema({
+const OrderSchema = new Schema({
   title: {
     type: String,
     required: [true, "Please provide a content"],
@@ -36,11 +36,11 @@ QuestionSchema.pre("save", function (next) {
   next();
 });
 
-QuestionSchema.methods.makeSlug = function () {
+OrderSchema.methods.makeSlug = function () {
   return slugify(this.title, {
     replacment: "-",
      remove: /[*+~.()'"!:@]/g,
     lower: true,
   });
 };
-module.exports = mongoose.model("Question", QuestionSchema);
+module.exports = mongoose.model("Order", OrderSchema);
