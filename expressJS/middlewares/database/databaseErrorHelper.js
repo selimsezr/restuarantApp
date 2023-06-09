@@ -18,9 +18,9 @@ const checkUserExist = asyncErrorWrapper(async (req, res, next) => {
 const checkOrderExist = asyncErrorWrapper(async (req, res, next) => {
   const Order_id = req.params.id || req.params.Order_id;
 
-  const Order = await Order.findById(Order_id);
+  const order = await Order.findById(Order_id);
 
-  if (!Order) {
+  if (!order) {
     return next(new CustomError("There is no such Order with that id", 400));
   }
   next();

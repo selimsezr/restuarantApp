@@ -13,7 +13,7 @@ const {
   getOrderOwnerAccess,
 } = require("../middlewares/authorization/auth");
 const {
-  checkOrderExist,
+  checkOrderExist
 } = require("../middlewares/database/databeseErrorHelpers");
 const router = express.Router();
 
